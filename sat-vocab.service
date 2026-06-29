@@ -1,0 +1,16 @@
+[Unit]
+Description=SAT Vocabulary Bank
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/user/SAT-vocab-bank/server
+ExecStart=/usr/bin/node /home/user/SAT-vocab-bank/server/index.js
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
